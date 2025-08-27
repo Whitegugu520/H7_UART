@@ -1,0 +1,197 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: ¶ÃVision V5.24.2.0
+Copyright (C) 2017 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: 1 2052006294@qq.com, 1, LIC=UJWP0-BWNI4-KPZZY-ILFJJ-7DGAX-BEKUU
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Plus  Version: 5.24.1
+Toolchain Path:  D:\Keil_v5\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.06 update 5 (build 528)
+Assembler:       Armasm.exe V5.06 update 5 (build 528)
+Linker/Locator:  ArmLink.exe V5.06 update 5 (build 528)
+Library Manager: ArmAr.exe V5.06 update 5 (build 528)
+Hex Converter:   FromElf.exe V5.06 update 5 (build 528)
+CPU DLL:         SARMCM3.DLL V5.24.1
+Dialog DLL:      DCM.DLL V1.16.0.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.1.0
+Dialog DLL:      TCM.DLL V1.32.0.0
+ 
+<h2>Project:</h2>
+C:\code\STM\H7_UART\MDK-ARM\H7_UART.uvprojx
+Project File Date:  08/26/2025
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.06 update 5 (build 528)', folder: 'D:\Keil_v5\ARM\ARMCC\Bin'
+Rebuild target 'H7_UART'
+assembling startup_stm32h743xx.s...
+compiling i2c.c...
+compiling stm32h7xx_hal_timebase_tim.c...
+compiling memorymap.c...
+compiling main.c...
+../Middleware/Inc/MYGPIO.h(6): warning:  #1295-D: Deprecated declaration MY_GPIO_Init - give arg types
+  void MY_GPIO_Init();
+../Middleware/Inc/MYUART.h(9): warning:  #1295-D: Deprecated declaration MY_UART_Init - give arg types
+  void MY_UART_Init();
+../Middleware/Inc/ZDTcontrol.h(11): warning:  #1295-D: Deprecated declaration ZDT_Control_TX - give arg types
+  void ZDT_Control_TX();                                                        //‰∏çÁî®ÁÆ?
+../Middleware/Inc/oled.h(13): warning:  #1295-D: Deprecated declaration OLED_Init - give arg types
+  void OLED_Init();
+../Middleware/Inc/oled.h(14): warning:  #1295-D: Deprecated declaration OLED_DisPlay_On - give arg types
+  void OLED_DisPlay_On();
+../Middleware/Inc/oled.h(15): warning:  #1295-D: Deprecated declaration OLED_DisPlay_Off - give arg types
+  void OLED_DisPlay_Off();
+../Middleware/Inc/oled.h(17): warning:  #1295-D: Deprecated declaration OLED_NewFrame - give arg types
+  void OLED_NewFrame();
+../Middleware/Inc/oled.h(18): warning:  #1295-D: Deprecated declaration OLED_ShowFrame - give arg types
+  void OLED_ShowFrame();
+../Middleware/Inc/oled.h(35): warning:  #1-D: last line of file ends without a newline
+  #endif // __OLED_H__
+../Core/Src/main.c: 9 warnings, 0 errors
+compiling gpio.c...
+compiling stm32h7xx_hal_msp.c...
+compiling stm32h7xx_it.c...
+compiling tim.c...
+compiling usart.c...
+compiling freertos.c...
+../Middleware/Inc/oled.h(13): warning:  #1295-D: Deprecated declaration OLED_Init - give arg types
+  void OLED_Init();
+../Middleware/Inc/oled.h(14): warning:  #1295-D: Deprecated declaration OLED_DisPlay_On - give arg types
+  void OLED_DisPlay_On();
+../Middleware/Inc/oled.h(15): warning:  #1295-D: Deprecated declaration OLED_DisPlay_Off - give arg types
+  void OLED_DisPlay_Off();
+../Middleware/Inc/oled.h(17): warning:  #1295-D: Deprecated declaration OLED_NewFrame - give arg types
+  void OLED_NewFrame();
+../Middleware/Inc/oled.h(18): warning:  #1295-D: Deprecated declaration OLED_ShowFrame - give arg types
+  void OLED_ShowFrame();
+../Middleware/Inc/oled.h(35): warning:  #1-D: last line of file ends without a newline
+  #endif // __OLED_H__
+../Middleware/Inc/MYGPIO.h(6): warning:  #1295-D: Deprecated declaration MY_GPIO_Init - give arg types
+  void MY_GPIO_Init();
+../Middleware/Inc/MYUART.h(9): warning:  #1295-D: Deprecated declaration MY_UART_Init - give arg types
+  void MY_UART_Init();
+../Middleware/Inc/ZDTcontrol.h(11): warning:  #1295-D: Deprecated declaration ZDT_Control_TX - give arg types
+  void ZDT_Control_TX();                                                        //‰∏çÁî®ÁÆ?
+../Core/Src/freertos.c(125): warning:  #69-D: integer conversion resulted in truncation
+  uint8_t acc_Control = 300; // Âä†ÈÄüÂ∫¶ÊéßÂà∂
+../Core/Src/freertos.c: 10 warnings, 0 errors
+compiling stm32h7xx_hal_cortex.c...
+compiling stm32h7xx_hal_tim_ex.c...
+compiling stm32h7xx_hal_rcc.c...
+compiling stm32h7xx_hal_gpio.c...
+compiling stm32h7xx_hal_hsem.c...
+compiling stm32h7xx_hal_flash.c...
+compiling stm32h7xx_hal_flash_ex.c...
+compiling stm32h7xx_hal_dma_ex.c...
+compiling stm32h7xx_hal_tim.c...
+compiling stm32h7xx_hal_rcc_ex.c...
+compiling stm32h7xx_hal_mdma.c...
+compiling stm32h7xx_hal_pwr.c...
+compiling stm32h7xx_hal_pwr_ex.c...
+compiling stm32h7xx_hal.c...
+compiling stm32h7xx_hal_dma.c...
+compiling stm32h7xx_hal_i2c_ex.c...
+compiling stm32h7xx_hal_exti.c...
+compiling font.c...
+compiling system_stm32h7xx.c...
+compiling stm32h7xx_hal_uart_ex.c...
+compiling MYGPIO.c...
+../Middleware/Inc/MYGPIO.h(6): warning:  #1295-D: Deprecated declaration MY_GPIO_Init - give arg types
+  void MY_GPIO_Init();
+..\Middleware\Src\MYGPIO.c: 1 warning, 0 errors
+compiling MYUART.c...
+../Middleware/Inc/MYGPIO.h(6): warning:  #1295-D: Deprecated declaration MY_GPIO_Init - give arg types
+  void MY_GPIO_Init();
+../Middleware/Inc/MYUART.h(9): warning:  #1295-D: Deprecated declaration MY_UART_Init - give arg types
+  void MY_UART_Init();
+..\Middleware\Src\MYUART.c(35): warning:  #1-D: last line of file ends without a newline
+  // }
+..\Middleware\Src\MYUART.c: 3 warnings, 0 errors
+compiling ZDTcontrol.c...
+../Middleware/Inc/MYGPIO.h(6): warning:  #1295-D: Deprecated declaration MY_GPIO_Init - give arg types
+  void MY_GPIO_Init();
+../Middleware/Inc/MYUART.h(9): warning:  #1295-D: Deprecated declaration MY_UART_Init - give arg types
+  void MY_UART_Init();
+../Middleware/Inc/ZDTcontrol.h(11): warning:  #1295-D: Deprecated declaration ZDT_Control_TX - give arg types
+  void ZDT_Control_TX();                                                        //‰∏çÁî®ÁÆ?
+..\Middleware\Src\ZDTcontrol.c(75): warning:  #1-D: last line of file ends without a newline
+  }
+..\Middleware\Src\ZDTcontrol.c: 4 warnings, 0 errors
+compiling croutine.c...
+compiling list.c...
+compiling event_groups.c...
+compiling encoder.c...
+..\Middleware\Src\encoder.c(29): warning:  #1-D: last line of file ends without a newline
+  }
+..\Middleware\Src\encoder.c: 1 warning, 0 errors
+compiling myvoid.cpp...
+compiling motor.c...
+../Middleware/Inc/motor.h(13): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\Middleware\Src\motor.c(18): warning:  #1-D: last line of file ends without a newline
+  }
+..\Middleware\Src\motor.c: 2 warnings, 0 errors
+compiling stm32h7xx_hal_uart.c...
+compiling queue.c...
+compiling stream_buffer.c...
+compiling pid.c...
+../Middleware/Inc/motor.h(13): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\Middleware\Src\pid.c(17): warning:  #223-D: function "Encoder1_Position" declared implicitly
+      actual = Encoder1_Position();
+..\Middleware\Src\pid.c(14): warning:  #550-D: variable "pid_p"  was set but never used
+      int pid_p,pid_i = 0,pid_d;
+..\Middleware\Src\pid.c: 3 warnings, 0 errors
+compiling oled.c...
+../Middleware/Inc/oled.h(13): warning:  #1295-D: Deprecated declaration OLED_Init - give arg types
+  void OLED_Init();
+../Middleware/Inc/oled.h(14): warning:  #1295-D: Deprecated declaration OLED_DisPlay_On - give arg types
+  void OLED_DisPlay_On();
+../Middleware/Inc/oled.h(15): warning:  #1295-D: Deprecated declaration OLED_DisPlay_Off - give arg types
+  void OLED_DisPlay_Off();
+../Middleware/Inc/oled.h(17): warning:  #1295-D: Deprecated declaration OLED_NewFrame - give arg types
+  void OLED_NewFrame();
+../Middleware/Inc/oled.h(18): warning:  #1295-D: Deprecated declaration OLED_ShowFrame - give arg types
+  void OLED_ShowFrame();
+../Middleware/Inc/oled.h(35): warning:  #1-D: last line of file ends without a newline
+  #endif // __OLED_H__
+..\Middleware\Src\oled.c: 6 warnings, 0 errors
+compiling timers.c...
+compiling stm32h7xx_hal_i2c.c...
+compiling heap_4.c...
+compiling port.c...
+compiling tasks.c...
+compiling cmsis_os.c...
+linking...
+Program Size: Code=22164 RO-data=1940 RW-data=148 ZI-data=19620  
+FromELF: creating hex file...
+"H7_UART\H7_UART.axf" - 0 Error(s), 39 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                http://www.keil.com/pack/ARM.CMSIS.5.0.1.pack
+                ARM.CMSIS.5.0.1
+                CMSIS (Cortex Microcontroller Software Interface Standard)
+   * Component: CORE Version: 5.0.1
+
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.STM32H7xx_DFP.2.7.0.pack
+                Keil.STM32H7xx_DFP.2.7.0
+                STMicroelectronics STM32H7 Series Device Support and Examples
+
+<h2>Collection of Component include folders:</h2>
+  .\RTE\_H7_UART
+  D:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include
+  D:\Keil_v5\ARM\PACK\Keil\STM32H7xx_DFP\2.7.0\Drivers\CMSIS\Device\ST\STM32H7xx\Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE:5.0.1
+Build Time Elapsed:  00:00:03
+</pre>
+</body>
+</html>
