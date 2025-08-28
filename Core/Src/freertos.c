@@ -40,7 +40,8 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-
+extern pid_t pid1;
+extern float speed_Control;
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -57,7 +58,8 @@ osThreadId defaultTaskHandle;
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
 void OLED_Task(void *pvParameters);
-void ZDT_control( void *pvParameters);
+void ZDT_Task( void *pvParameters);
+void motor_Task(void *pvParameters);
 /* USER CODE END FunctionPrototypes */
 
 void StartDefaultTask(void const * argument);
@@ -120,10 +122,8 @@ void MX_FREERTOS_Init(void) {
 /* USER CODE BEGIN Header_StartDefaultTask */
 TaskHandle_t OLEDTask = NULL;
 TaskHandle_t ZDTTask = NULL;
+TaskHandle_t motorHandle = NULL;
 
-
-uint16_t speed_Control = 300; // 速度控制
-uint8_t acc_Control = 300; // 加速度控制
 /* USER CODE END Header_StartDefaultTask */
 void StartDefaultTask(void const * argument)
 {
@@ -141,12 +141,21 @@ void StartDefaultTask(void const * argument)
   );
 
   xTaskCreate(
-    ZDT_control,              /* 任务函数 */
+    ZDT_Task,              /* 任务函数 */
     "ZDTTask",                   /* 任务名称（用于调试） */
     128,                        /* 堆栈大小（以字为单位） */
     NULL,                       /* 传递给任务函数的参数 */
     2,                          /* 任务优先级 */
     &ZDTTask           /* 任务句柄 */
+  );
+
+  xTaskCreate(
+    motor_Task,              /* 任务函数 */
+    "motorTask",                   /* 任务名称（用于调试） */
+    128,                        /* 堆栈大小（以字为单位） */
+    NULL,                       /* 传递给任务函数的参数 */
+    4,                          /* 任务优先级 */
+    &motorHandle            /* 任务句柄 */
   );
 
   taskEXIT_CRITICAL();
@@ -161,23 +170,56 @@ void StartDefaultTask(void const * argument)
 /* Private application code --------------------------------------------------*/
 /* USER CODE BEGIN Application */
 
-void OLED_Task( void *pvParameters )
+void OLED_Task( void *pvParameters )//用来OLED显示PID参数
 {
   for(;;)
   {
     char a[20]={0};
+    char pidnumber[20]={0};
+    char pidtarget[10]={0};
+    char piderror[10]={0};
+    char pidout[10]={0};
+    sprintf(pidnumber,"kp:%1f ki:%1f kd:%1f",pid1.kp, pid1.ki, pid1.kd);
     sprintf(a,"Speed:%d",speed_Control);
+    sprintf(pidtarget,"target:%f",pid1.target);
+    sprintf(piderror,"error:%f",pid1.error0);
+    sprintf(pidout,"out:%f",pid1.out);
     OLED_NewFrame();
-    OLED_PrintASCIIString(1,1,a,&afont12x6,OLED_COLOR_NORMAL);
+    OLED_PrintASCIIString(1,1,pidnumber,&afont12x6,OLED_COLOR_NORMAL);
+    OLED_PrintASCIIString(14,1,a,&afont12x6,OLED_COLOR_NORMAL);
+    OLED_PrintASCIIString(28,1,pidtarget,&afont12x6,OLED_COLOR_NORMAL);
+    OLED_PrintASCIIString(28,30,piderror,&afont12x6,OLED_COLOR_NORMAL);
+    OLED_PrintASCIIString(28,60,pidout,&afont12x6,OLED_COLOR_NORMAL);
     OLED_ShowFrame();
-    vTaskDelay(50); // 延时1秒
+    vTaskDelay(50);
   }
 }
-void ZDT_control( void *pvParameters )
+void ZDT_Task( void *pvParameters ) //暂且不用
 {
   for(;;)
   {
     
+  }
+}
+
+void motor_Task( void *pvParameters )
+{
+  for(;;)
+  {
+    pid1.target = speed_Control;
+    pid_update(&pid1);
+    if(pid1.out > 0)
+    {
+      Motor_SetSpeed(pid1.out);
+    }
+    else if(pid1.out < 0)
+    {
+      Motor_SetSpeed(-pid1.out);
+    }
+    else
+    {
+      Motor_SetSpeed(0);
+    }
   }
 }
 
