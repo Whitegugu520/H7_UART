@@ -1,31 +1,36 @@
 #include "pid.h"
 
 
-float kp = 1.0 , ki = 0.1, kd = 0.01; // PID??
 
-int target = 0;
-int error = 0;
-int actual = 0;
-int out = 0;
 
-void pid_set()
+void pid_update(pid_t *p)
 {
-    int last_actual = actual; // ????????
-    int pid_p,pid_i = 0,pid_d;
+    p->actual0 = p->actual1;
+    p->actual1 = Encoder1_Position();
+    p->error0 = p->error1;
+    p->error1 = p->target - p->actual1;
 
-
-    actual = Encoder1_Position();
-    error = target - actual; // ????
-
-
-    pid_p = error;  // ?????
-
-    pid_i += error;
-    if(pid_i > 100 || pid_i < -100) { // ?????
-        pid_i = (pid_i > 0) ? 100 : -100;
+    if(fabs(p->error1) < 5)
+    {
+        p->out = 0;
     }
+    else
+    {
+        
+        p->pid_p = p->error1;  //p项
 
-    pid_d = actual - last_actual; // ?????
-    
-    out = kp * pid_d + ki * pid_i + kd * pid_d; // PID??
+        p->pid_i += p->error1;
+        if(fabs(p->pid_i) > 100) {
+            p->pid_i = (p->pid_i > 0) ? 100 : -100;
+        }                                   //i项积分限幅
+
+        p->pid_d = p->actual1 - p->actual0; //d项
+        
+        p->out = p->kp * p->pid_p + 
+                 p->ki * p->pid_i + 
+                 p->kd * p->pid_d;       //用来设定最终值
+        
+        if(p->out > p->outMax) p->out = p->outMax;
+        if(p->out < p->outMin) p->out = p->outMin;//用来规定大小
+    }
 }
