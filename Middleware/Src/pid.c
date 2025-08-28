@@ -1,8 +1,5 @@
 #include "pid.h"
 
-
-
-
 void pid_update(pid_t *p)
 {
     p->actual0 = p->actual1;

@@ -22,4 +22,6 @@ typedef struct {
     float outMin;
 }pid_t;
 
+void pid_update(pid_t *p);
+
 #endif

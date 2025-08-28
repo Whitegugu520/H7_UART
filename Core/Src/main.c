@@ -46,7 +46,14 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-
+pid_t pid1 = {
+    .kp = 0.5,
+    .ki = 0.1,
+    .kd = 0.01,
+    .outMax = 1000,
+    .outMin = -1000,
+};
+float speed_Control = 0; // 速度控制
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -57,35 +64,12 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-extern UART_HandleTypeDef huart1;
-extern uint16_t speed_Control; // 速度控制
-extern uint8_t acc_Control; // 加速度控制
+
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
-  if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0) == GPIO_PIN_RESET)
+  if(GPIO_Pin == ZDT_Pin)
   {
-    while(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0) == GPIO_PIN_RESET)
-    {
-      HAL_Delay(1);   
-    }
-    speed_Control += 10;
-  }
-  if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_1) == GPIO_PIN_RESET)
-  {
-    while(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_1) == GPIO_PIN_RESET)
-    {
-      HAL_Delay(1);   
-    }
-    if(speed_Control >= 10)
-      speed_Control -= 10;
-  }
-  if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_2) == GPIO_PIN_RESET)
-  {
-    while(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_2) == GPIO_PIN_RESET)
-    {
-      HAL_Delay(1);   
-    }
-    speed_Control = 0;
+    ZDT_EXTI_Callback();
   }
 }
 
