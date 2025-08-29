@@ -191,7 +191,7 @@ void OLED_Task( void *pvParameters )//用来OLED显示PID参数
     OLED_PrintASCIIString(1,36,piderror,&afont12x6,OLED_COLOR_NORMAL);
     OLED_PrintASCIIString(1,48,pidout,&afont12x6,OLED_COLOR_NORMAL);
     OLED_ShowFrame();
-    vTaskDelay(50);
+    vTaskDelay(10);
   }
 }
 void ZDT_Task( void *pvParameters ) //暂且不用
@@ -208,19 +208,8 @@ void motor_Task( void *pvParameters )
   {
     pid1.target = speed_Control;
     pid_update(&pid1);
-   if(pid1.out > 0)
-   {
-     Motor_SetSpeed(pid1.out);
-   }
-   else if(pid1.out < 0)
-   {
-     Motor_SetSpeed(pid1.out);
-   }
-   else
-   {
-     Motor_SetSpeed(0);
-   }
-    vTaskDelay(20);
+    Motor_SetSpeed(pid1.out);
+    vTaskDelay(10);
   }
 }
 

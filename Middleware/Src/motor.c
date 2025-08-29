@@ -40,5 +40,5 @@ void Motor_SetSpeed(float speed) //设置占空比
     }
     else 
         Motor_Forward(0);
-    __HAL_TIM_SET_COMPARE(&MOTOR1_PWM, MOTOR1_PWM_CHANNEL,(uint8_t)speed);
+    __HAL_TIM_SET_COMPARE(&MOTOR1_PWM, MOTOR1_PWM_CHANNEL,(uint16_t)speed);
 }

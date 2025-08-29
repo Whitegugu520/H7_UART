@@ -7,7 +7,7 @@ void pid_update(pid_t *p)
     p->error0 = p->error1;
     p->error1 = p->target - p->actual1;
 
-    if(fabs(p->error1) < 5)
+    if(fabs(p->error1) < 8)
     {
         p->out = 0;
     }
