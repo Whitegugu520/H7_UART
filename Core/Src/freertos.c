@@ -179,17 +179,17 @@ void OLED_Task( void *pvParameters )//用来OLED显示PID参数
     char pidtarget[10]={0};
     char piderror[10]={0};
     char pidout[10]={0};
-    sprintf(pidnumber,"kp:%1f ki:%1f kd:%1f",pid1.kp, pid1.ki, pid1.kd);
-    sprintf(a,"Speed:%d",speed_Control);
-    sprintf(pidtarget,"target:%f",pid1.target);
-    sprintf(piderror,"error:%f",pid1.error0);
-    sprintf(pidout,"out:%f",pid1.out);
+    sprintf(pidnumber,"kp:%.d ki:%.1f kd:%.1f",Encoder1_Position(), pid1.pid_i, pid1.pid_d);
+    sprintf(a,"S:%.1f",speed_Control);
+    sprintf(pidtarget,"t:%.1f",pid1.target);
+    sprintf(piderror,"e:%.1f",pid1.error0);
+    sprintf(pidout,"o:%.1f",pid1.out);
     OLED_NewFrame();
     OLED_PrintASCIIString(1,1,pidnumber,&afont12x6,OLED_COLOR_NORMAL);
-    OLED_PrintASCIIString(14,1,a,&afont12x6,OLED_COLOR_NORMAL);
-    OLED_PrintASCIIString(28,1,pidtarget,&afont12x6,OLED_COLOR_NORMAL);
-    OLED_PrintASCIIString(28,30,piderror,&afont12x6,OLED_COLOR_NORMAL);
-    OLED_PrintASCIIString(28,60,pidout,&afont12x6,OLED_COLOR_NORMAL);
+    OLED_PrintASCIIString(1,12,a,&afont12x6,OLED_COLOR_NORMAL);
+    OLED_PrintASCIIString(1,24,pidtarget,&afont12x6,OLED_COLOR_NORMAL);
+    OLED_PrintASCIIString(1,36,piderror,&afont12x6,OLED_COLOR_NORMAL);
+    OLED_PrintASCIIString(1,48,pidout,&afont12x6,OLED_COLOR_NORMAL);
     OLED_ShowFrame();
     vTaskDelay(50);
   }
@@ -208,18 +208,19 @@ void motor_Task( void *pvParameters )
   {
     pid1.target = speed_Control;
     pid_update(&pid1);
-    if(pid1.out > 0)
-    {
-      Motor_SetSpeed(pid1.out);
-    }
-    else if(pid1.out < 0)
-    {
-      Motor_SetSpeed(-pid1.out);
-    }
-    else
-    {
-      Motor_SetSpeed(0);
-    }
+   if(pid1.out > 0)
+   {
+     Motor_SetSpeed(pid1.out);
+   }
+   else if(pid1.out < 0)
+   {
+     Motor_SetSpeed(pid1.out);
+   }
+   else
+   {
+     Motor_SetSpeed(0);
+   }
+    vTaskDelay(20);
   }
 }
 

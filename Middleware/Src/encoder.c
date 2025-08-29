@@ -19,6 +19,7 @@ void Encoder1_Update()
 }
 int Encoder1_Position()
 {
+    Encoder1_Update();
     return Encoder1_value;
 }
 int Encoder1_Speed()

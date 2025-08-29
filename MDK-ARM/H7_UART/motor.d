@@ -38,3 +38,4 @@ h7_uart\motor.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim_ex.h
 h7_uart\motor.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h
 h7_uart\motor.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h
 h7_uart\motor.o: ../Core/Inc/tim.h
+h7_uart\motor.o: ../Core/Inc/gpio.h

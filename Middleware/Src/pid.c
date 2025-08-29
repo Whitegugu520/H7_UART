@@ -3,7 +3,7 @@
 void pid_update(pid_t *p)
 {
     p->actual0 = p->actual1;
-    p->actual1 = Encoder1_Position();
+    p->actual1 = Encoder1_Speed();
     p->error0 = p->error1;
     p->error1 = p->target - p->actual1;
 
@@ -17,8 +17,8 @@ void pid_update(pid_t *p)
         p->pid_p = p->error1;  //p项
 
         p->pid_i += p->error1;
-        if(fabs(p->pid_i) > 100) {
-            p->pid_i = (p->pid_i > 0) ? 100 : -100;
+        if(fabs(p->pid_i) > 200) {
+            p->pid_i = (p->pid_i > 0) ? 200 : -200;
         }                                   //i项积分限幅
 
         p->pid_d = p->actual1 - p->actual0; //d项

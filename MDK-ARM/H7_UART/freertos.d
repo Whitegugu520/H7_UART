@@ -57,3 +57,8 @@ h7_uart\freertos.o: ../Middleware/Inc/ZDTcontrol.h
 h7_uart\freertos.o: ../Middleware/Inc/MYUART.h
 h7_uart\freertos.o: ../Middleware/Inc/MYGPIO.h
 h7_uart\freertos.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+h7_uart\freertos.o: ../Middleware/Inc/pid.h
+h7_uart\freertos.o: ../Middleware/Inc/encoder.h
+h7_uart\freertos.o: ../Middleware/Inc/motor.h
+h7_uart\freertos.o: ../Core/Inc/tim.h
+h7_uart\freertos.o: ../Core/Inc/gpio.h

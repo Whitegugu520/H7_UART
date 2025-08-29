@@ -63,3 +63,6 @@ h7_uart\main.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 h7_uart\main.o: ../Middleware/Inc/oled.h
 h7_uart\main.o: ../Middleware/Inc/font.h
 h7_uart\main.o: ../Middleware/Inc/myvoid.h
+h7_uart\main.o: ../Middleware/Inc/pid.h
+h7_uart\main.o: ../Middleware/Inc/encoder.h
+h7_uart\main.o: ../Middleware/Inc/motor.h

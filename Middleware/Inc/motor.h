@@ -3,6 +3,7 @@
 
 #include "main.h"
 #include "tim.h"
+#include "gpio.h"
 
 extern TIM_HandleTypeDef htim2;
 extern TIM_HandleTypeDef htim3;

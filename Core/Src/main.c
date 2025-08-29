@@ -37,6 +37,7 @@
 #include "font.h"
 #include "myvoid.h"
 #include "pid.h"
+#include "motor.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -47,9 +48,10 @@
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
 pid_t pid1 = {
-    .kp = 0.5,
-    .ki = 0.1,
-    .kd = 0.01,
+    .kp = 2,
+    .ki = 0.4,
+    .kd = 0.1,
+    // .target = 500,
     .outMax = 1000,
     .outMin = -1000,
 };
@@ -67,10 +69,7 @@ float speed_Control = 0; // 速度控制
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
-  if(GPIO_Pin == ZDT_Pin)
-  {
-    ZDT_EXTI_Callback();
-  }
+  
 }
 
 /* USER CODE END PV */
@@ -129,7 +128,13 @@ int main(void)
 	MY_GPIO_Init();
 	HAL_Delay(100);
 	OLED_Init();
-  /* USER CODE END 2 */
+  HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);
+  Encoder_Init();
+//	HAL_GPIO_WritePin(GPIOC,GPIO_PIN_8, GPIO_PIN_SET); 
+  // __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, 500);
+  // Motor_Forward(-1);
+	// HAL_Delay(100000);
+	/* USER CODE END 2 */
 
   /* Call init function for freertos objects (in cmsis_os2.c) */
   MX_FREERTOS_Init();

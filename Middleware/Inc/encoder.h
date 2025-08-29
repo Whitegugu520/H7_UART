@@ -10,6 +10,8 @@ extern int Encoder1_value;
 
 void Encoder_Init(void); 
 void Encoder_Update(void);
+int Encoder1_Position(void);
+int Encoder1_Speed(void);
 
 
 

@@ -40,3 +40,4 @@ h7_uart\pid.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h
 h7_uart\pid.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h
 h7_uart\pid.o: ../Middleware/Inc/motor.h
 h7_uart\pid.o: ../Core/Inc/tim.h
+h7_uart\pid.o: ../Core/Inc/gpio.h
